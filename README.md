@@ -54,5 +54,19 @@ const app = express();
 
 const port = 3000;
 
-app.listen()
+app.listen(port, () => {
+    console.log(`Running on port ${port}`)
 ```
+
+- Vamos iniciar o arquivo do **tsconfig.json**, com um comando bem simples:
+
+```bash
+npx tsc --init
+```
+
+- No arquivo **tsconfig.json**, vamos descomentar a linha onde tem o comando **"rootDir": "./"** e vamos adicionar **src** apos a barra, **"rootDir": "./src"**.
+
+- Vamos adicionar também o comando **"outDir": "./"**, e adicionar dist a o path, o nome do diretório pode ser o que voce quiser, mas o de senso comum seria 'dist'.
+  **"outDir": "./dist"**.
+
+- Futuramente, usaremos mais esse arquivo, por hora ja basta.
