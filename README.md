@@ -105,10 +105,31 @@ node ./dist/index.js
 
 ```json
  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     // Esses dois comandos
     "build": "tsc --build",
     "start": "node dist/index.js"
   },
 
+```
+
+- Agora vamos instalar o **nodemon**, uma ferramenta que da auto reload na aplicação, sem a
+  necessidade de finalizar e iniciar novamente.
+
+```bash
+npm i -D nodemon
+```
+
+- Vamos adicionar também, a biblioteca do **ts-node**, para que o **nodemon** reconheça os arquivos typescript:
+
+```bash
+npm i -D ts-node
+```
+
+- Agora, vamos fazer as mudanças necessárias para o **nodemon** funcionar automaticamente.
+  No arquivo **package.json**, vamos adicionar o comando:
+
+```json
+"scripts": {
+    "start:dev": "nodemon ./src/index.ts"
+  },
 ```
