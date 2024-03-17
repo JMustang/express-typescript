@@ -70,3 +70,45 @@ npx tsc --init
   **"outDir": "./dist"**.
 
 - Futuramente, usaremos mais esse arquivo, por hora ja basta.
+
+- Agora vamos buildar o projeta para o typescript usando o comando:
+
+```bash
+npx tsc --build
+```
+
+- Esse comando cria o diretório **dist** e transpila nosso código typescript para javascript.
+
+```js
+"use strict";
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Running on port ${port}`);
+});
+```
+
+- Dessa forma podemo executa nosso projeto usando o comando:
+
+```bash
+node ./dist/index.js
+```
+
+- Para facilitar, vamos criar um alias no package.json desse comando para buildar e executar o projeto:
+
+```json
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    // Esses dois comandos
+    "build": "tsc --build",
+    "start": "node dist/index.js"
+  },
+
+```
