@@ -133,3 +133,75 @@ npm i -D ts-node
     "start:dev": "nodemon ./src/index.ts"
   },
 ```
+
+## Criando Rotas
+
+- Agora vamos aprender como usar rotas para simplifica e nao deixar todo o código em um único arquivo. Crie uma pasta no diretório **src** com o nome **routes**, dentro de routes vamos criar uma arquivo chamado **users.ts**,
+  sera a primeira rota da aplicação.
+
+- Dentro do arquivo users.ts, vamos adicionar esse código:
+
+```ts
+import { Router } from "express";
+
+const router = Router();
+
+router.get("/");
+
+export default router;
+```
+
+- No arquivo **index.ts** vamos adicionar as linhas:
+
+```ts
+import userRouter from "./routes/users";
+
+app.use("/api/users", userRouter);
+```
+
+- Agora vamos criar o diretório **handlers**, nele vamos criar o arquivo **users.ts**.
+
+Seu projeto deve esta assim.
+
+![dir](Diretorios.png)
+
+## Método get
+
+- Um exemplo simples de como adicionar um endpoint `GET` usando Express.js:
+
+```typescript
+import express, { Request, Response } from "express";
+
+const app = express();
+const port = 3000;
+
+// Rota GET para a raiz da aplicação
+app.get("/", (req: Request, res: Response) => {
+  res.send("Bem-vindo à minha aplicação!");
+});
+
+// Rota GET para '/api/users'
+app.get("/api/users", (req: Request, res: Response) => {
+  // Supondo que aqui você tenha uma função que retorna os usuários do seu sistema
+  const users = [
+    { id: 1, name: "Usuário 1" },
+    { id: 2, name: "Usuário 2" },
+    { id: 3, name: "Usuário 3" },
+  ];
+  res.json(users);
+});
+
+// Inicia o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});
+```
+
+Neste exemplo:
+
+- Temos duas rotas `GET`, uma para a raiz da aplicação (`"/"`) e outra para `"/api/users"`.
+- Quando alguém acessa a raiz da aplicação, o servidor responde com uma mensagem de boas-vindas.
+- Quando alguém acessa a rota `"/api/users"`, o servidor responde com um array de objetos JSON simulando uma lista de usuários.
+- A função `res.send()` é usada para enviar uma resposta de texto simples, enquanto `res.json()` é usada para enviar uma resposta JSON.
+
+Você pode adicionar este exemplo ao seu tutorial para mostrar como criar endpoints `GET` no Express.js.
