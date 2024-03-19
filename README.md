@@ -161,10 +161,6 @@ app.use("/api/users", userRouter);
 
 - Agora vamos criar o diretório **handlers**, nele vamos criar o arquivo **users.ts**.
 
-Seu projeto deve esta assim.
-
-![dir](Diretorios.png)
-
 ## Método get
 
 - Um exemplo simples de como adicionar um endpoint `GET` usando Express.js:
@@ -205,3 +201,27 @@ Neste exemplo:
 - A função `res.send()` é usada para enviar uma resposta de texto simples, enquanto `res.json()` é usada para enviar uma resposta JSON.
 
 Você pode adicionar este exemplo ao seu tutorial para mostrar como criar endpoints `GET` no Express.js.
+
+## Handlers
+
+- Criaremos um **Handlers** no projeto onde iremos criar todos os métodos para a rota **users**.
+
+Seu projeto deve esta assim.
+
+![dir](Diretorios.png)
+
+- Dentro de handlers/users, iremos adicionar os métodos para a rota **users**:
+
+```ts
+import { Request, Response } from "express";
+
+// um método para o get
+export function getUsers(req: Request, res: Response) {
+  res.send([]);
+}
+
+// um método para o get by id
+export function getUsersById(req: Request, res: Response) {
+  res.send([]);
+}
+```

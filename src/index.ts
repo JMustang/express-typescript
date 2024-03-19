@@ -8,5 +8,5 @@ app.use("/api/users", userRouter);
 const port = 3000;
 
 app.listen(port, () => {
-  console.log(`Running on port ${port}`);
+  console.log(`Running on port www.localhost:${port}`);
 });
