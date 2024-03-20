@@ -225,3 +225,59 @@ export function getUsersById(req: Request, res: Response) {
   res.send([]);
 }
 ```
+
+## Método Post
+
+- Agora vamos criar o método post na rota de users:
+
+- No arquivo **routes/users**, vamos fazer a chamada do método:
+
+```ts
+router.post("/", createUser);
+```
+
+- No arquivo **handlers/users**, vamos criar o método:
+
+```ts
+export function createUser(req: Request, res: Response) {}
+```
+
+## Dto`s
+
+- Claro! DTO é a sigla para "Data Transfer Object" (Objeto de Transferência de Dados). É um padrão de design comum em desenvolvimento de software, especialmente em arquiteturas de aplicativos em camadas ou em serviços de API.
+
+Um DTO é uma classe simples que geralmente contém apenas propriedades para armazenar dados. Sua principal função é transferir dados entre diferentes partes de um sistema, como entre a camada de apresentação (como uma interface de usuário) e a camada de serviço ou entre microsserviços em uma arquitetura de microsserviços.
+
+A utilização de DTOs traz alguns benefícios, como:
+
+1. **Encapsulamento de dados**: Os DTOs permitem encapsular dados relacionados em uma única unidade, facilitando a passagem e manipulação de dados entre diferentes partes do sistema.
+
+2. **Redução de acoplamento**: Ao usar DTOs, você pode reduzir o acoplamento entre diferentes partes do sistema, pois elas se comunicam apenas através de objetos de transferência de dados, em vez de acessar diretamente os dados uns dos outros.
+
+3. **Flexibilidade**: DTOs oferecem flexibilidade na estrutura dos dados transferidos, permitindo que você modele os objetos de acordo com as necessidades específicas de cada parte do sistema.
+
+Em um contexto de aplicativo web com Express.js e TypeScript, você pode usar DTOs para definir a estrutura dos dados que são enviados e recebidos pelos endpoints da sua API. Isso ajuda a padronizar a comunicação entre o cliente e o servidor, além de fornecer uma camada de abstração entre a representação dos dados no cliente e a lógica de negócios no servidor.
+
+Por exemplo, ao criar uma rota para criar um novo usuário, você pode definir um DTO chamado `CreateUserDTO` que contém propriedades como `name`, `email`, `password`, etc. Esse DTO seria usado para validar os dados recebidos do cliente e para transferir esses dados para o serviço responsável por criar o usuário no banco de dados.
+
+- No diretório raiz (src), crie um diretório chamado **dtos**, dentro dele, crie também o arquivo
+  **CreateUser.dto.ts**.
+- Vamos criar uma interface para o **CreateUser**.
+
+```ts
+export interface CreateUserDto {
+  username?: string;
+  email: string;
+  password?: string;
+}
+```
+
+- No arquivo **handlers/users**, vamos fazer a chamada do dto:
+
+```ts
+import { CreateUserDto } from "../dtos/CreateUser.dto";
+export function createUser(
+  req: Request<{}, {}, CreateUserDto>,
+  res: Response
+) {}
+```
